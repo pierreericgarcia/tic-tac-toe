@@ -3,7 +3,7 @@
 
 import * as React from "react";
 
-export const emptySquares = Array(9).fill(null);
+const emptySquares = Array(9).fill(null);
 
 export const calculateNextValue = (squares) => {
   const xSquares = squares.filter((s) => s === "X");

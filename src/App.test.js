@@ -1,7 +1,17 @@
-import { calculateNextValue, calculateWinner, emptySquares, selectSquare } from "./App";
+import { calculateNextValue, calculateWinner, selectSquare } from "./App";
 
-test("Frist Moove : Player 1 selects the fourth square", () => {
-  expect(selectSquare(3, emptySquares)).toStrictEqual([
+test("Game successfully update its status after first player targets the fourth square", () => {
+  expect(selectSquare(3, [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ])).toStrictEqual([
     null,
     null,
     null,
@@ -14,27 +24,33 @@ test("Frist Moove : Player 1 selects the fourth square", () => {
   ]);
 });
 
-test("Second Moove : Player 2 selects the first square", () => {
+test("Game successfully update its status after second player targets the first square", () => {
   expect(
     selectSquare(0, [null, null, null, "X", null, null, null, null, null])
   ).toStrictEqual(["O", null, null, "X", null, null, null, null, null]);
 });
 
-test("Which one is the next to play ? fifth tour.", () => {
+test("Game successfully calculate which player needs to play at round 5", () => {
   expect(
     calculateNextValue(["O", null, null, "X", "X", null, "O", null, null])
   ).toStrictEqual("X");
 });
 
-test("Which one is the next to play ? sixth tour.", () => {
+test("Game successfully calculate which player needs to play at round 6", () => {
   expect(
     calculateNextValue(["O", null, 'X', "X", "X", null, "O", null, null])
   ).toStrictEqual("O");
 });
 
 
-test("Which one is the winner ?", () => {
+test("Game successfully calculate who is the winner based on its current status", () => {
   expect(
     calculateWinner(["O", 'O', 'O', "X", "X", null, "X", null, 'X'])
   ).toStrictEqual("O");
+});
+
+test("Game successfully calculate that there is no winner based on its current status", () => {
+  expect(
+    calculateWinner(["O", 'O', null, "X", "X", null, "X", null, null])
+  ).toStrictEqual(null);
 });
