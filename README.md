@@ -1,7 +1,7 @@
 # TIC TAC TOE
 
 This app is a simple Tic tac toe game made with React.
-It's main purpose was to train me to TDD development.
+It's main purpose was to train me to TDD.
 
 Here's a brief preview of the app :
 
